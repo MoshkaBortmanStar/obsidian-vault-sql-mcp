@@ -61,36 +61,30 @@ uvx obsidian-vault-sql-mcp --config /path/to/config.json
 
 ## Claude Code setup
 
-Add to your Claude Code MCP settings (`~/.claude/settings.json`):
+Use the `claude mcp add` command — **do not** add to `settings.json` directly.
 
-```json
-{
-  "mcpServers": {
-    "obsidian": {
-      "command": "uvx",
-      "args": [
-        "obsidian-vault-sql-mcp",
-        "--config", "/path/to/config.json"
-      ]
-    }
-  }
-}
+**Single vault:**
+```bash
+claude mcp add obsidian --scope user -- uvx obsidian-vault-sql-mcp --vault personal=/path/to/vault
 ```
 
-Or with inline vaults:
+**Multiple vaults:**
+```bash
+claude mcp add obsidian --scope user -- uvx obsidian-vault-sql-mcp \
+  --vault personal=/path/to/vault \
+  --vault work=/path/to/work-vault
+```
 
-```json
-{
-  "mcpServers": {
-    "obsidian": {
-      "command": "uvx",
-      "args": [
-        "obsidian-vault-sql-mcp",
-        "--vault", "personal=C:/Users/you/Documents/MyVault"
-      ]
-    }
-  }
-}
+**Via config file:**
+```bash
+claude mcp add obsidian --scope user -- uvx obsidian-vault-sql-mcp --config /path/to/config.json
+```
+
+`--scope user` makes the server available in all your projects. Use `--scope project` to limit it to the current project.
+
+Verify the connection:
+```bash
+claude mcp get obsidian
 ```
 
 ---
