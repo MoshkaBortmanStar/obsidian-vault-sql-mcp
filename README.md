@@ -1,4 +1,4 @@
-# obsidian-mcp
+# obsidian-vault-sql-mcp
 
 MCP server for [Obsidian](https://obsidian.md) vaults. Works directly with `.md` files on disk — no Obsidian app needed. Each vault gets its own SQLite index for fast note lookup by name.
 
@@ -25,7 +25,7 @@ Multiple vaults are supported — each has its own database inside it.
 Requires [uv](https://docs.astral.sh/uv/) installed.
 
 ```bash
-uvx obsidian-mcp --help
+uvx obsidian-vault-sql-mcp --help
 ```
 
 No manual install needed — `uvx` handles everything on first run.
@@ -37,7 +37,7 @@ No manual install needed — `uvx` handles everything on first run.
 ### Option A — inline vaults
 
 ```bash
-uvx obsidian-mcp --vault personal=/path/to/my-vault --vault work=/path/to/work-vault
+uvx obsidian-vault-sql-mcp --vault personal=/path/to/my-vault --vault work=/path/to/work-vault
 ```
 
 ### Option B — config file
@@ -54,7 +54,7 @@ Create `config.json`:
 ```
 
 ```bash
-uvx obsidian-mcp --config /path/to/config.json
+uvx obsidian-vault-sql-mcp --config /path/to/config.json
 ```
 
 ---
@@ -69,7 +69,7 @@ Add to your Claude Code MCP settings (`~/.claude/settings.json`):
     "obsidian": {
       "command": "uvx",
       "args": [
-        "obsidian-mcp",
+        "obsidian-vault-sql-mcp",
         "--config", "/path/to/config.json"
       ]
     }
@@ -85,7 +85,7 @@ Or with inline vaults:
     "obsidian": {
       "command": "uvx",
       "args": [
-        "obsidian-mcp",
+        "obsidian-vault-sql-mcp",
         "--vault", "personal=C:/Users/you/Documents/MyVault"
       ]
     }
